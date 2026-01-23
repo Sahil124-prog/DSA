@@ -19,3 +19,4 @@ int main(){
     int idx = LinearSearch(arr,key);
     (key>5)?cout<<idx<<" "<<key*2 : cout<<idx<<" "<<key/2;
 }
+
