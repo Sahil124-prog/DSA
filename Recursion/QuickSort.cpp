@@ -10,7 +10,7 @@ int partition(vector<int>&arr,int start,int end){
         if(arr[i]<=pivot) count++;
     }
     //after counting we get to know about the  right place of pivot , now we will create a pivot index at that position
-
+    
     int pivotIndex=start+count;
     swap(arr[pivotIndex],arr[start]);
 
@@ -18,7 +18,7 @@ int partition(vector<int>&arr,int start,int end){
 
     int i = start, j= end;
     while(i<pivotIndex && j>pivotIndex){
-        while(arr[i]<pivot) i++;
+        while(arr[i]<=pivot) i++;
         while(arr[j]>pivot) j--;
         swap(arr[i],arr[j]);
     }
