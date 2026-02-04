@@ -1,0 +1,2 @@
+lastNode(head);
+    // print(head);

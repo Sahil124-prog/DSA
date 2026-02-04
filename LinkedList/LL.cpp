@@ -77,6 +77,55 @@ void insertAtPosition(Node* &head,int pos,int val){
     temp->next=newNode;
 }
 
+void DeleteAtEnd(Node* &head){
+    Node* temp = head;
+    while(temp->next->next!=nullptr){
+        temp=temp->next;
+    }
+    delete temp->next;
+    
+    temp->next=NULL;
+}
+
+
+void deleteNTh(Node* head,int pos){
+    if(pos==1){
+        Node* temp =head;
+        head=head->next;
+        delete temp;
+        return;
+    }
+    Node* temp = head;
+    for(int i=1;i<pos-1 && temp!=NULL;i++){
+        temp=temp->next;
+    }
+    if(temp==NULL||temp->next==NULL) return;
+    Node* temp1=temp->next;
+    temp->next=temp->next->next;
+    delete temp1;
+}
+
+int countEven(Node* head){
+    Node* temp =head;
+    int count=0;
+    while(temp!=NULL){
+        if((temp->data)%2==0){
+            count++;
+        }
+        temp=temp->next;
+    }
+    return count;
+}
+
+
+bool keyexists(Node* &head,int key){
+    Node* temp = head;
+    if(temp==NULL) return false;
+    if(temp->data==key) return true;
+    keyexists(temp->next,key);
+}
+
+
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
@@ -95,7 +144,20 @@ int main(){
     print(head);
     insertAtPosition(head,3,5);
     print(head);
+    DeleteAtEnd(head);
+    print(head);
 
+    deleteNTh(head,2);
+    print(head);
+
+    cout<<countEven(head)<<"\n";
+
+    if(keyexists(head,2)){
+        cout<<"Key exists";
+    }
+    else{
+        cout<<"Key doesnot exists";
+    }
     return 0;
 }
 
